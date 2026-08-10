@@ -1,4 +1,4 @@
-import type { IReader } from '../../../types/readersTypes';
+import type { IReader } from '../../types/readers.types';
 import ReaderCard from '../ReaderCard/ReaderCard';
 
 interface ReaderListProps {
@@ -6,20 +6,19 @@ interface ReaderListProps {
   onReaderClick?: (id: string) => void;
 }
 
-const ReaderList = ({ readers, onReaderClick }: ReaderListProps) => {
+const ReaderList = ({ readers,  }: ReaderListProps) => {
   if (readers.length === 0) {
     return (
       <div className="empty-state">
-        <div className="empty-state-icon">👥</div>
         <h3>Читатели не найдены</h3>
       </div>
-    );
+    ); 
   }
 
   return (
     <div className="reader-list">
       {readers.map((reader) => (
-        <ReaderCard key={reader.id} reader={reader} onClick={onReaderClick} />
+        <ReaderCard key={reader.id} reader={reader}/>
       ))}
     </div>
   );

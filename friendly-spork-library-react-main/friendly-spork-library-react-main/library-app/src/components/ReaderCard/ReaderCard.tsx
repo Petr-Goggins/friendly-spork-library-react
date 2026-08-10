@@ -1,4 +1,4 @@
-import type { IReader } from '../../../types/readersTypes';
+import type { IReader } from '../../types/readers.types';
 
 interface ReaderCardProps {
   reader: IReader;

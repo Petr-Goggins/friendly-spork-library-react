@@ -1,4 +1,4 @@
-import type { IBook } from '../../types/bookTypes';
+import type { IBook } from '../../types/book.types';
 
 interface BookDetailProps {
   book: IBook;

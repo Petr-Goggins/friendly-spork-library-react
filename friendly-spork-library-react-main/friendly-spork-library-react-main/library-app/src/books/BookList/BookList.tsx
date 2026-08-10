@@ -1,4 +1,4 @@
-import type { IBook } from '../../types/bookTypes';
+import type { IBook } from '../../types/book.types';
 import BookCard from '../bookCard/BookCard';
 
 interface BookListProps {

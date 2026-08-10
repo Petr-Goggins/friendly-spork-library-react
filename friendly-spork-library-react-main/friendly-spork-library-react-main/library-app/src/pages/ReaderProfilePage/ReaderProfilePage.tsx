@@ -1,13 +1,25 @@
-import ReaderProfile from '../../components/readers/ReaderProfile/ReaderProfile';
-import type { IReader } from '../../types/readersTypes';
+import { useParams } from 'react-router-dom';
+import Layout from '../../components/common/Layout/Layout';
+import ReaderProfile from '../../components/ReaderProfile/ReaderProfile';
+import { mockReaders } from '../../mocks/readers';
 import './ReaderProfilePage.css';
-
-interface ReaderProfilePageProps {
-  reader: IReader;
+const ReaderProfilePage = () => {
+const { id } = useParams();
+const reader = mockReaders.find(r => r.id === id);
+if (!reader) {
+return (
+<Layout>
+<div className="not-found">
+<h1>Читатель не найден</h1>
+<p>Пользователь с ID {id} не существует</p>
+</div>
+</Layout>
+);
 }
-
-const ReaderProfilePage = ({ reader }: ReaderProfilePageProps) => {
-  return <ReaderProfile reader={reader} />;
+return (
+<Layout>
+<ReaderProfile reader={reader} />
+</Layout>
+);
 };
-
 export default ReaderProfilePage;
