@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "library-app",
   "private": true,
   "version": "0.0.0",
@@ -23,12 +22,5 @@
     "oxlint": "^1.75.0",
     "typescript": "~6.0.2",
     "vite": "^8.2.0"
-=======
-  "dependencies": {
-    "react-router-dom": "^7.18.2"
-  },
-  "devDependencies": {
-    "@types/react-router-dom": "^5.3.3"
->>>>>>> origin/main
   }
 }
