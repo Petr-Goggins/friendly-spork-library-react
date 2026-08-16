@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import BookList from '../../books/BookList/BookList';
 import BookSearch from '../../books/BookSearch/BookSearch';
-import AddBookModal from '../../components/AddReaderModal/AddReaderModal';
-import type { IBook } from '../../types/book.types';
+import AddBookModal from '../../components/AddReaderModal';
+import { selectAllBooks, selectBooksCount, addBook } from '../../store/books-slice';
+import type { AppDispatch } from '../../store/books-slice';
 
-interface BooksPageProps {
-  books: IBook[];
-  onAddBook: (book: IBook) => void;
-}
+const BooksPage = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const books = useSelector(selectAllBooks);
+  const totalCount = useSelector(selectBooksCount);
 
-const BooksPage = ({ books, onAddBook }: BooksPageProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -17,6 +18,10 @@ const BooksPage = ({ books, onAddBook }: BooksPageProps) => {
     book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     book.author.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleAddBook = (newBook: any) => {
+    dispatch(addBook(newBook));
+  };
 
   return (
     <>
@@ -26,7 +31,7 @@ const BooksPage = ({ books, onAddBook }: BooksPageProps) => {
           + Добавить книгу
         </button>
       </div>
-      <p className="page-subtitle">Всего книг: <strong>{books.length}</strong></p>
+      <p className="page-subtitle">Всего книг: <strong>{totalCount}</strong></p>
       <div className="page-toolbar">
         <BookSearch onSearch={setSearchQuery} />
         {searchQuery && <span className="search-result-count">Найдено: {filteredBooks.length}</span>}
@@ -35,7 +40,7 @@ const BooksPage = ({ books, onAddBook }: BooksPageProps) => {
       <AddBookModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        onAddBook={onAddBook}
+        onAddBook={handleAddBook}
       />
     </>
   );
