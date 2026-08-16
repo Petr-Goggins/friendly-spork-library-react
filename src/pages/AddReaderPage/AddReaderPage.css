@@ -1,0 +1,22 @@
+.add-reader-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.add-reader-form .form-group {
+  margin-bottom: 15px;
+}
+.add-reader-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.add-reader-form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.add-reader-form .btn {
+  margin-right: 10px;
+}

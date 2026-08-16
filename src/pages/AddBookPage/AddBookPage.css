@@ -1,0 +1,23 @@
+.add-book-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.add-book-form .form-group {
+  margin-bottom: 15px;
+}
+.add-book-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.add-book-form input,
+.add-book-form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.add-book-form .btn {
+  margin-right: 10px;
+}

@@ -1,16 +1,19 @@
-import ReaderList from '../../components/readers/ReaderList/ReaderList';
-import { mockReaders } from '../../mocks/readers';
-import './ReadersPage.css';
+import { Link } from 'react-router-dom';
+import ReaderList from '../../components/ReaderList/ReaderList';
+import type { IReader } from '../../types/readers.types';
 
 interface ReadersPageProps {
-  onReaderClick?: (id: string) => void;
+  readers: IReader[];
 }
 
-const ReadersPage = ({ onReaderClick }: ReadersPageProps) => {
+const ReadersPage = ({ readers }: ReadersPageProps) => {
   return (
     <>
       <h1 className="page-title">Читатели библиотеки</h1>
-      <ReaderList readers={mockReaders} onReaderClick={onReaderClick} />
+      <div className="page-toolbar">
+        <Link to="/add-reader" className="btn btn-primary">Добавить читателя</Link>
+      </div>
+      <ReaderList readers={readers} />
     </>
   );
 };

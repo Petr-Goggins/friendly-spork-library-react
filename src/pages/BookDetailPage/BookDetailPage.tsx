@@ -1,12 +1,22 @@
+import { useParams } from 'react-router-dom';
 import BookDetail from '../../books/BookDetail/BookDetail';
-import type { IBook } from '../../types/bookTypes';
-import './BookDetailPage.css';
+import type { IBook } from '../../types/book.types';
 
 interface BookDetailPageProps {
-  book: IBook;
+  books: IBook[];
 }
 
-const BookDetailPage = ({ book }: BookDetailPageProps) => {
+const BookDetailPage = ({ books }: BookDetailPageProps) => {
+  const { id } = useParams<{ id: string }>();
+  const book = books.find(b => b.id === id);
+  if (!book) {
+    return (
+      <div className="not-found">
+        <h1>Книга не найдена</h1>
+        <p>Книга с ID {id} не существует</p>
+      </div>
+    );
+  }
   return <BookDetail book={book} />;
 };
 

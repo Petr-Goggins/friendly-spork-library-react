@@ -1,25 +1,44 @@
+import { NavLink } from 'react-router-dom';
+
 const Header = () => {
   return (
     <header className="header">
-        <div className="container">
+      <div className="container">
         <div className="header-content">
-            <div className="logo">
+          <div className="logo">
             <span className="logo-icon">📚</span>
             <span>Библиотека</span>
-            </div>
-            <nav className="nav">
-            <a href="index.html" className="active">
-                📖 Книги
-                <span className="nav-badge">10</span>
-            </a>
-            <a href="readers.html">
-                👤 Читатели
-                <span className="nav-badge">5</span>
-            </a>
-            </nav>
+          </div>
+          <nav className="nav">
+            <NavLink
+              to="/books"
+              className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+            >
+              Книги
+            </NavLink>
+            <NavLink
+              to="/readers"
+              className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+            >
+              Читатели
+            </NavLink>
+            <NavLink
+              to="/add-book"
+              className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+            >
+              + Книга
+            </NavLink>
+            <NavLink
+              to="/add-reader"
+              className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+            >
+              + Читатель
+            </NavLink>
+          </nav>
         </div>
-        </div>
+      </div>
     </header>
   );
-}; 
+};
+
 export default Header;
