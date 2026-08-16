@@ -1,7 +1,16 @@
 export interface IBookHistory {
   bookId: string;
-  takenAt: Date;
-  returnedAt?: Date;
+  title: string;
+  author: string;
+  issuedDate: Date;
+  returnedDate?: Date; // если есть – книга возвращена
+}
+
+export interface IActiveBook {
+  bookId: string;
+  title: string;
+  author: string;
+  issuedDate: Date;
 }
 
 export interface IReader {
@@ -10,6 +19,6 @@ export interface IReader {
   email: string;
   phone: string;
   registrationDate: Date;
-  booksHistory: IBookHistory[];
-  activeBooks: string[];
+  activeBooks: IActiveBook[];   // книги на руках
+  booksHistory: IBookHistory[]; // полная история
 }
