@@ -24,6 +24,22 @@ class Laptop(BaseModel):
     disc:TypeDisc
     size:int=Field(ge=128, le=1024)
 
+class LaptopCreate(BaseModel):
+    model:int
+    title:str
+    ram:int
+    gpu:str
+    disc:TypeDisc
+    size:int=Field(ge=128, le=1024)
+
+class LaptopUpdate(BaseModel):
+    id:int
+    model:int
+    title:str
+    ram:int
+    gpu:str
+    disc:TypeDisc
+    size:int=Field(ge=128, le=1024)
 @field_validator("title")
 def tittle_cannot_be_whitespase(cls,v):
     if not v.strip():
