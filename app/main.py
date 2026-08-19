@@ -4,6 +4,7 @@ from typing import List
 
 from fastapi import FastAPI
 
+from servise import get_laptops
 from shema import Laptop, LaptopCreate, LaptopUpdate
 
 app=FastAPI()
@@ -41,13 +42,18 @@ laptops=[
         }
 ]
 
+@app.get('/', response_model=List[Laptop])
+def getLaptop():
+    return laptops
+
 @app.get('/laptops/{id}', response_model=List[Laptop])
 def getLpt(id:int):
     return filter(lambda x:x['id']==id,laptops)
 
 @app.get('/laptop')
-def getLpt(name,gpu):
-    return {'name':name,'видеокарта':gpu}
+async def getLpt():
+    data= await get_laptops()
+    return data
 
 @app.post('/laptops', status_code=201)
 def postLpt(lpt:LaptopCreate):
