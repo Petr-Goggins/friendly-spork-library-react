@@ -2,8 +2,10 @@
 
 from typing import List
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 
+from dependesis import get_current_user
+from models import User
 from servise import get_laptops
 from shema import Laptop, LaptopCreate, LaptopUpdate
 
@@ -56,7 +58,7 @@ async def getLpt():
     return data
 
 @app.post('/laptops', status_code=201)
-def postLpt(lpt:LaptopCreate):
+def createlpt(lpt:LaptopCreate,user:User=Depends(get_current_user)):
     return lpt
 
 @app.delete('/laptops' ,status_code=204)

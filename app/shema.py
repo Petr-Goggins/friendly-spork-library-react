@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import BaseModel,Field, field_validator
 from enum import Enum
 
@@ -40,6 +42,20 @@ class LaptopUpdate(BaseModel):
     gpu:str
     disc:TypeDisc
     size:int=Field(ge=128, le=1024)
+
+    class User(BaseModel):
+         id:int
+         username:str
+         password:str
+         is_admin:bool
+         is_mentor:bool
+         created_at:datetime
+
+    class UserCreate(BaseModel):
+             username:str
+             password:str
+             
+            
 @field_validator("title")
 def tittle_cannot_be_whitespase(cls,v):
     if not v.strip():
