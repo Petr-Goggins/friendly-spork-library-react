@@ -30,3 +30,15 @@ def create_accsess_token(data:dict)->str:
         )
     return encode_jwt
 
+def authenticate_user(db:Session, 
+                     username:str,
+                     password:str
+                     ):
+    user=get_user(db,username)
+    if not user:
+        return False
+    if not verfy_password(password,user.password):
+        return False
+    return user
+
+    

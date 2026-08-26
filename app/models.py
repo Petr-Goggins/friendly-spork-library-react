@@ -35,4 +35,3 @@ class User(Base):
     is_admin=Column(Boolean,default=False)
     is_mentor=Column(Boolean,default=False)
     created_at=Column(DateTime,server_default=func.now())
-Base.metadata.create_all(engine)
